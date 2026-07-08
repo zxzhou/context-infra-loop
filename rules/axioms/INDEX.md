@@ -1,0 +1,47 @@
+# Axioms Index
+
+Axioms are durable principles used to frame decisions and evaluate work.
+
+- [A01. Ask-Do Paradigm](a01_ask_do_paradigm.md): AI-native work shifts from asking for answers to delegating outcomes. The scarce skill is defining intent, constraints, and verification rather than issuing step-by-step commands.
+- [A02. Multiplier, Not Replacement](a02_multiplier_not_replacement.md): AI multiplies judgment, taste, and systems thinking; it does not remove the need for ownership. The operator remains accountable for goals, tradeoffs, and quality.
+- [A03. From IC to Manager](a03_ic_to_manager.md): Using AI well resembles managing capable contributors: set context, define success, inspect outputs, and build feedback loops instead of micromanaging implementation.
+- [A04. Reliability Management](a04_reliability_management.md): AI reliability is managed through systems: constraints, tests, observability, retries, and review. It is not guaranteed by model intelligence alone.
+- [A05. Documentation Is Long-Term Memory](a05_docs_long_term_memory.md): Durable knowledge belongs in files with names, owners, and history. Written context lets humans and agents reuse lessons instead of rediscovering them.
+- [A06. Framework Choice Is Worldview Lock-In](a06_framework_worldview.md): Frameworks encode assumptions about control flow, state, and extensibility. Choose them only when their worldview matches the system you need to build.
+- [A07. Design Philosophy Sets the Ceiling](a07_design_philosophy_ceiling.md): The quality ceiling of a product is often determined by its design philosophy before implementation starts. Better components cannot rescue confused intent.
+- [A08. Prompt Quality Is a Leverage Point](a08_prompt_quality_lever.md): Prompts are operating specifications. Clear goals, context, constraints, examples, and success criteria turn model capability into dependable work.
+- [A09. Builder Mindset Is the Moat](a09_builders_mindset_moat.md): In an AI-abundant world, advantage shifts toward people who build, test, ship, and learn quickly. Taste plus execution compounds faster than passive knowledge.
+- [A10. Rapport Over Raw Intelligence](a10_rapport_over_raw_intelligence.md): Useful AI collaboration depends on trust, shared context, and interaction quality. A slightly less capable system with strong rapport can outperform a stronger but brittle one.
+- [A11. Tool Composition Expands Capability](a11_tool_composition_as_capability_expansion.md): New capability often comes from composing existing tools with shared state and clear interfaces, not from inventing a single larger tool.
+- [A12. AI-Native Development Paradigm](a12_ai_native_development_paradigm.md): AI-native development treats agents as active collaborators in design, implementation, testing, and documentation, with the repository as the shared workspace.
+- [A13. Technology Adoption Stages](a13_tech_adoption_stages.md): Adoption moves from novelty to workflow fit to infrastructure maturity. Evaluate a technology by its current stage, not by its maximum theoretical promise.
+- [M01. Closed-Loop Calibration](m01_closed_loop_calibration.md): Good judgment improves through feedback loops: act, observe, compare against expectation, and update the model of the world.
+- [M02. Reverse Debugging Mindset](m02_reverse_debug_mindset.md): When outcomes are wrong, trace backward from the observed failure to the assumptions, inputs, and constraints that made it likely.
+- [M03. Quantified Prioritization](m03_quantified_prioritization.md): Priorities become clearer when impact, confidence, effort, and reversibility are made explicit. Numbers are imperfect but expose hidden tradeoffs.
+- [M04. Active Management Over Tool Mentality](m04_active_management_over_tool_mentality.md): Tools do not manage themselves. Sustainable performance requires active ownership of process, context, quality, and maintenance.
+- [M05. Simplicity Is Cognitive Efficiency](m05_simplicity_cognitive_efficiency.md): Simplicity reduces coordination cost, debugging cost, and context load. It is a performance feature, not an aesthetic preference.
+- [M06. Connection Making](m06_connection_making.md): Insight often comes from connecting patterns across domains. Maintain enough structured memory to notice analogies when they matter.
+- [M07. Multi-Threading Energy](m07_multi_threading_energy.md): Multiple active threads can be sustainable when each has a clear role and switching is intentional. The point is energy management, not doing everything at once.
+- [M08. Self-Systematization](m08_self_systematization.md): Personal capability compounds when routines, knowledge, and decisions are externalized into systems that can be inspected and improved.
+- [M09. AI-Era Management Paradigm](m09_ai_era_management_paradigm.md): Managing AI-era work means designing context, delegation, review, and learning loops across humans and agents.
+- [M10. Education Retention Ladder](m10_education_retention_ladder.md): Learning sticks when people move from exposure to practice to feedback to ownership. Retention rises with active use and repeated retrieval.
+- [T01. Infrastructure Over Components](t01_infrastructure_over_components.md): The dominant bottleneck is usually the base system: context, memory, deployment, observability, orchestration, and interfaces, not any single model or UI feature.
+- [T02. Results Certainty Over Process Certainty](t02_results_certainty.md): For AI-assisted work, specify the desired outcome and verification bar more strongly than the exact path. Let the system choose implementation details when risk is bounded.
+- [T03. Context Isolation Is Multi-Agent Value](t03_context_isolation.md): Multi-agent work is valuable when contexts are isolated, responsibilities are explicit, and integration points are clear.
+- [T04. Data Over Opinion](t04_data_over_opinion.md): When claims can be measured, measure them. Opinions are useful hypotheses, but decisions should move toward evidence.
+- [T05. Cognition Is the Asset](t05_cognition_asset.md): Code and artifacts are consumables; reusable understanding is the asset. Capture the reasoning that lets future work move faster.
+- [T06. Dependency Topology Over Task Count](t06_dependency_topology.md): Throughput is governed by dependency structure more than the number of tasks. Clarify blockers, parallelizable work, and integration order.
+- [T07. Isolation, Processing, Verification](t07_isolation_processing_verification.md): Reliable work separates context isolation, transformation, and verification. Mixing them hides errors and weakens review.
+- [T08. First-Principles Methodology](t08_first_principles_methodology.md): Break problems into constraints, mechanisms, and evidence before adopting inherited labels or conventional solutions.
+- [T09. Data Strategy as MDP](t09_data_strategy_mdp.md): Data strategy is a sequential decision process. Each collection, labeling, and storage choice changes future option value.
+- [V01. Responsibility](v01_responsibility.md): Ownership stays with the operator. Delegation to AI changes execution, not accountability.
+- [V02. Verifiability](v02_verifiability.md): A claim or workflow is stronger when it can be checked by an independent signal: tests, logs, sources, screenshots, or reproducible commands.
+- [V03. Attribution Shapes Perception](v03_attribution_shapes_perception.md): Where people assign credit and blame changes trust, adoption, and behavior. Make attribution explicit when it affects collaboration.
+- [V04. Temporal Grounding Prevents Hallucination](v04_temporal_grounding_prevents_hallucination.md): Time-sensitive claims need dates, source freshness, and explicit uncertainty. Temporal grounding prevents stale facts from masquerading as current truth.
+- [V05. Trust Has Two Dimensions](v05_trust_attribution_dual_dimension.md): Trust depends on both capability and attribution. People ask whether a system works and whether responsibility is placed correctly.
+- [X01. Constraint Paradox](x01_constraint_paradox.md): Good constraints increase freedom by reducing ambiguity. A bounded problem can be solved more creatively than a vague one.
+- [X02. Systematic Debugging and Hypothesis Testing](x02_systematic_debugging_hypothesis_testing.md): Debugging is hypothesis management: isolate variables, test the cheapest discriminating signal, and update from evidence.
+- [X03. Efficiency Is Determined by Bottlenecks](x03_efficiency_determined_by_bottlenecks.md): Optimizing non-bottlenecks creates motion without throughput. Find the active constraint before investing effort.
+- [X04. Design for the Actual Use Case](x04_design_for_actual_use_case.md): Design should follow real users, real frequency, real constraints, and real failure modes, not imagined generic scenarios.
+- [X05. Precision Cascades Through Systems](x05_precision_cascades_through_systems.md): Small ambiguities upstream become large quality problems downstream. Precise names, interfaces, and success criteria compound.
+- [X06. Big-Picture System Analysis](x06_big_picture_system_analysis.md): Local symptoms often come from system-level structure. Step back to inspect incentives, dependencies, feedback loops, and bottlenecks.

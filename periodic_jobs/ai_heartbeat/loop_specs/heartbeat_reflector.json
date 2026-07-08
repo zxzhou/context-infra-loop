@@ -1,0 +1,52 @@
+{
+  "id": "heartbeat_reflector",
+  "version": 1,
+  "purpose": "Review accumulated observations, promote durable lessons into rules, and remove low-value memory.",
+  "trigger": {
+    "type": "cron_or_manual",
+    "recommended_schedule": "weekly",
+    "manual_command": "python3 periodic_jobs/ai_heartbeat/src/v0/reflector.py"
+  },
+  "inputs": [
+    {
+      "name": "knowledge_base",
+      "path": "periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md"
+    },
+    {
+      "name": "observations",
+      "path": "contexts/memory/OBSERVATIONS.md"
+    }
+  ],
+  "allowed_reads": [
+    "rules/WORKSPACE.md",
+    "periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md",
+    "contexts/memory/OBSERVATIONS.md",
+    "rules/"
+  ],
+  "allowed_writes": [
+    "contexts/memory/OBSERVATIONS.md",
+    "contexts/loop_runs/ai_heartbeat/heartbeat_reflector/*.json",
+    "rules/SOUL.md",
+    "rules/USER.md",
+    "rules/COMMUNICATION.md",
+    "rules/WORKSPACE.md",
+    "rules/skills/*.md",
+    "rules/axioms/*.md"
+  ],
+  "verification": [
+    "Promote only cross-project lessons with repeated validation and a clear future use case.",
+    "Preserve ownership boundaries for SOUL, USER, COMMUNICATION, WORKSPACE, skills, and axioms.",
+    "Do not rewrite unrelated memory or rules.",
+    "Reply with a concise promotion report."
+  ],
+  "terminal_states": [
+    "PROMOTED",
+    "NO_PROMOTION",
+    "FAILED_NEEDS_HUMAN",
+    "FAILED_CREATE_SESSION",
+    "FAILED_START_MESSAGE",
+    "FAILED_TIMEOUT",
+    "FAILED_EXCEPTION"
+  ],
+  "memory_policy": "Promoted material should become shorter, more operational, and easier to reuse than the raw observation."
+}

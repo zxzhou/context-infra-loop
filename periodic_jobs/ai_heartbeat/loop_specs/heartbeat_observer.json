@@ -1,0 +1,56 @@
+{
+  "id": "heartbeat_observer",
+  "version": 1,
+  "purpose": "Scan recent workspace activity and append useful observations to durable memory.",
+  "trigger": {
+    "type": "cron_or_manual",
+    "recommended_schedule": "daily",
+    "manual_command": "python3 periodic_jobs/ai_heartbeat/src/v0/observer.py YYYY-MM-DD"
+  },
+  "inputs": [
+    {
+      "name": "target_date",
+      "required": true,
+      "format": "YYYY-MM-DD"
+    },
+    {
+      "name": "knowledge_base",
+      "path": "periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md"
+    },
+    {
+      "name": "workspace_root",
+      "path": "."
+    }
+  ],
+  "allowed_reads": [
+    "rules/WORKSPACE.md",
+    "periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md",
+    "contexts/memory/OBSERVATIONS.md",
+    "workspace files needed to inspect recent changes"
+  ],
+  "allowed_writes": [
+    "contexts/memory/OBSERVATIONS.md",
+    "contexts/loop_runs/ai_heartbeat/heartbeat_observer/*.json"
+  ],
+  "forbidden_writes": [
+    "rules/",
+    "periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md"
+  ],
+  "verification": [
+    "If Date: target_date already exists, do not modify OBSERVATIONS.md.",
+    "If writing observations, use exact date header format Date: YYYY-MM-DD.",
+    "References to repository files must be paths relative to the workspace root.",
+    "Separate observations into High, Medium, and Low priority entries."
+  ],
+  "terminal_states": [
+    "SKIPPED_EXISTING_DATE",
+    "WRITTEN",
+    "NO_SIGNAL",
+    "FAILED_NEEDS_HUMAN",
+    "FAILED_CREATE_SESSION",
+    "FAILED_START_MESSAGE",
+    "FAILED_TIMEOUT",
+    "FAILED_EXCEPTION"
+  ],
+  "memory_policy": "Capture only observations likely to be useful beyond the current task. Do not promote rules or garbage collect memory in this loop."
+}
