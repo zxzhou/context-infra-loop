@@ -1,38 +1,59 @@
-# Markdown to HTML Conversion
+---
+title: Markdown to HTML Best Practices
+category: BestPractice
+tags: [markdown, html, pandoc, document-conversion]
+difficulty: Easy
+related_projects: []
+created: 2025-02-12
+updated: 2025-02-12
+---
 
-## Metadata
+# Markdown to HTML Best Practices and Lessons Learned
 
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+When converting carefully written Markdown documents to HTML, especially with tools such as Pandoc, we have distilled the following core lessons to ensure accurate and professional formatting.
 
-## Core Idea
+## 1. Strict Requirements for List Formatting
 
-Convert Markdown to polished HTML while preserving structure, tables, code blocks, links, and readable typography.
+### Leave a Blank Line
+Markdown converters, such as Pandoc, usually require one **complete blank line** between a list, whether unordered or ordered, and the paragraph above it.
 
-## When to Use
+- **Incorrect**:
+  ```markdown
+  Applications of physiognomic language in marriage and dating:
+  * Strength matching
+  * Fortune matching
+  ```
+  *Result: the list may be recognized as plain text, so bullet symbols may not appear in the HTML.*
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+- **Correct**:
+  ```markdown
+  Applications of physiognomic language in marriage and dating:
 
-## Operating Procedure
+  * Strength matching
+  * Fortune matching
+  ```
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+## 2. Structural Integrity When Merging Sections
 
-## Quality Bar
+### Newlines Between Sections
+When merging multiple Markdown files into one large document, insert **at least two newline characters** between files, meaning one blank line.
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+- **Reason**: If the previous file ends with text and the next file starts with a `#` heading with no blank line between them, the parser may confuse the heading logic.
+- **Best practice**: Explicitly add `\n\n` when merging with `cat` or scripts.
 
-## Common Pitfalls
+## 3. Logical Reorganization of Headings and Introductions
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+### Remove Redundant Headings
+In ebooks or long tutorials, having a separate `## Introduction` heading in every chapter increases table-of-contents burden and creates visual breaks.
+
+- **Improvement**: Remove the literal `## Introduction` heading and place the introductory text directly after the chapter heading (`#`). This makes the reading experience smoother and better aligned with modern book typography.
+
+## 4. CSS Details for Mobile Adaptation
+
+### Spacing Management
+Ensure the HTML `body` or main container has sufficient `padding` (24px or more is recommended) to prevent text from pressing against screen edges on mobile devices.
+
+## 5. Normalizing Symbols and Brackets
+
+### Clean Headings
+In the final consolidated document, remove unnecessary brackets or special symbols from headings, such as `## [Chapter Summary]`, whenever possible. A concise `## Chapter Summary` looks more professional and also makes the automatically generated table of contents (TOC) cleaner.

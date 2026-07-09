@@ -1,38 +1,116 @@
-# AI Debugging Diagnosis
+# AI-Assisted Debugging Diagnosis
 
 ## Metadata
 
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+- **Type**: BestPractice
+- **Applicable scenario**: When "the AI cannot fix the code" during AI-assisted development
+- **Created**: 2026-02-21
+- **Source**: Observation notes from 2026-01-19
 
-## Core Idea
+---
 
-Diagnose AI failures by separating context gaps, tool failures, specification ambiguity, model limitations, and verification weaknesses.
+## Core Insight
 
-## When to Use
+**In the vast majority of cases where "AI cannot fix the code," the root cause is the human user's process, not the system architecture.**
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+Common misunderstandings:
+- "The codebase is a mess; AI cannot change it" -> actually insufficient context
+- "AI is not smart enough" -> actually unclear instructions
+- "We need a refactor" -> actually missing success criteria
 
-## Operating Procedure
+---
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+## Diagnostic Decision Tree
 
-## Quality Bar
+```
+AI cannot fix the code
+    |
+    +--> Was enough context provided?
+    |       |
+    |       +--> No -> Add context (relevant files, error logs, expected behavior)
+    |       |
+    |       +--> Yes -> Continue
+    |
+    +--> Were clear success criteria defined?
+    |       |
+    |       +--> No -> Define "what good means" (not only "it runs")
+    |       |
+    |       +--> Yes -> Continue
+    |
+    +--> Was a feedback channel provided?
+    |       |
+    |       +--> No -> Let AI see the result (test output, screenshots, logs)
+    |       |
+    |       +--> Yes -> Continue
+    |
+    +--> It may be a real architectural problem
+            |
+            +--> Consider local refactoring or splitting the problem
+```
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+---
 
-## Common Pitfalls
+## Common Problems and Solutions
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+### 1. Insufficient Context
+
+Symptoms:
+- AI's proposed solution drifts away from the actual need
+- It repeatedly edits the same piece of code
+- It introduces nonexistent dependencies or functions
+
+Solutions:
+- Provide relevant files, not only the file with the error
+- Provide an overview of the project structure
+- Provide a similar correct implementation as a reference
+
+### 2. Vague Success Criteria
+
+Symptoms:
+- AI asks "is this OK?" and the human says "change it more"
+- After multiple rounds of edits, the human is still dissatisfied but cannot state the specific issue
+
+Solutions:
+- Define quantitative metrics (performance, coverage, error types)
+- Provide examples of expected output
+- Break the task into smaller verifiable steps
+
+### 3. Missing Feedback Channel
+
+Symptoms:
+- AI cannot tell whether its edit worked
+- The human has to test manually to discover problems
+
+Solutions:
+- Provide the test command and expected output
+- Let AI execute the command and inspect the result
+- Attach screenshots when UI is involved
+
+---
+
+## When It Really Is an Architectural Problem
+
+Signals that refactoring is genuinely needed:
+- The same problem appears repeatedly in different places
+- The issue remains unsolved even after context is added
+- Multiple AI-proposed solutions all have obvious flaws
+- The problem crosses multiple module boundaries
+
+Even then, try first:
+- Local refactoring rather than a large rewrite
+- Increasing test coverage
+- Improving documentation and comments
+
+---
+
+## Relationship to Other Skills
+
+- Use with the "70% problem" diagnosis in `bestpractice_ai_programming_mindset.md`
+- Use with the verification mechanism in `bestpractice_staged_approach.md`
+- Use with the Todo task-management mechanism in the system prompt for task decomposition
+
+## Changelog
+
+| Date | Change |
+|------|--------|
+| 2026-02-21 | Initial version, from observation notes dated 2026-01-19 |

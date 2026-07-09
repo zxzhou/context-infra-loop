@@ -1,38 +1,61 @@
-# Interview Evaluation Best Practices
+# Interview Evaluation Framework in the AI Era
 
-## Metadata
+Interview evaluation shifts from assessing Skill to assessing Trait, while also identifying AI-assisted cheating.
 
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+## Core Principles
 
-## Core Idea
+### Roles Are Defined by Trait, Not Skill
 
-Evaluate candidates with structured evidence, role-specific rubrics, calibrated examples, and clear separation between observations and judgments.
+Skills depreciate quickly in the AI era. Interviews should assess:
+- business sensitivity
+- motivation to solve problems
+- stress tolerance
+- storytelling and persuasiveness
 
-## When to Use
+rather than programming ability or framework familiarity alone.
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+### Senior Interview Strategy Shift
 
-## Operating Procedure
+Stop asking "what did you do" and dig into "why" (rationale):
+- Why did you choose this solution?
+- What alternatives existed? Why did you abandon them?
+- What would you do differently if you started over?
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+Be wary of candidates who use accuracy on imbalanced datasets.
 
-## Quality Bar
+## Identifying AI-Assisted Cheating
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+### Visual Signals
 
-## Common Pitfalls
+- Eyes fixed on a narrow area (screen)
+- No filler words (normal people pause and hesitate)
+- Overly rigorous structure (a typical feature of AI output)
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+### Logical Signals
+
+- Hallucinations that sound too complete
+- Smooth answers even about nonexistent content
+- Inability to recognize nonstandard pronunciation of words (AI reads directly instead of recognizing)
+
+### Probe Tactics
+
+1. **Knowledge-cutoff bait**: Invent a nonexistent model/framework/version and observe the candidate's response
+2. **Reverse follow-up**: Ask for specific details about something they "just mentioned"
+3. **Pronunciation trap**: Use nonstandard pronunciation of a term and observe whether they can recognize it correctly
+
+## Probing Technical Depth
+
+### Auto-Labeling Pipeline Background
+
+For candidates with experience in automated labeling pipelines:
+1. **Systematic recall-bias identification**: Does the training data contain systematic bias?
+2. **Evaluation blind-spot probing**: Do the evaluation metrics cover all failure modes?
+
+### Edge vs Cloud Decision Framework
+
+Decide across three dimensions:
+1. **Latency requirements**: High real-time requirements -> Edge
+2. **Criticality**: Severe failure consequences -> Edge + redundancy
+3. **Technical feasibility**: Model size vs device compute
+
+In Magic Leap practice, ORB features outperformed frontier approaches such as SuperGlue: classic algorithms can still be valuable in specific scenarios.

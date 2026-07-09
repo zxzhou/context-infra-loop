@@ -1,33 +1,48 @@
-# V05. Trust Has Two Dimensions
+---
+id: axiom_v5_trust_attribution_dual_dimension_2026
+category: trust
+created: 2026-03-01
+updated: 2026-03-01
+---
+
+# V5. The Dual Dimension of Trust Attribution
 
 ## 1. Core Axiom
 
-Trust depends on both capability and attribution. People ask whether a system works and whether responsibility is placed correctly.
+Trust in AI products is two-dimensional: **trust subject** (trust AI vs trust the team) and **trust domain** (entertainment vs productivity). The root cause of most product failures is that users trust the AI but do not trust the team.
 
-## 2. Implications
+## 2. Deep Reasoning
 
-This axiom should change how a task is framed before work begins. Use it to clarify what actually constrains the outcome, what evidence would prove progress, and which parts of the system deserve attention first.
+### 2x2 Matrix
 
-In agentic work, the axiom is especially useful because model capability can hide weak process. A stronger model may produce more fluent output, but it does not remove the need for context design, verification, ownership, and feedback.
+| | Trust AI | Do Not Trust AI |
+|---|---|---|
+| **Trust Team** | Healthy product | Team reputation overdraft |
+| **Do Not Trust Team** | High risk (users are deceived) | Product death |
 
-## 3. Application
+### The Root of Trust Misalignment
 
-Use this axiom when you see recurring friction, vague success criteria, unclear ownership, excessive tool debate, brittle handoffs, or a decision that depends on hidden assumptions. Translate the principle into a concrete check before acting.
+Users have cognitive bias about engineering complexity: "isn't this just prompt tuning?" This mindset causes users to attribute product quality entirely to AI capability rather than the team's engineering investment. When the product fails, users blame AI instead of understanding the team's constraints.
 
-Practical prompts:
+### Trust Subject Drift
 
-1. What is the real bottleneck or uncertainty here?
-2. What would make the result independently verifiable?
-3. Which context, interface, or feedback loop is missing?
-4. What should be documented so the next iteration starts smarter?
+Trust can drift from "AI capability" to "AI itself" (anthropomorphism), then to "this idea" or "this platform." Each drift increases user blindness toward team decisions.
 
-## 4. Failure Modes
+### Strategy: Black Box -> White Box
 
-- Confusing activity with progress.
-- Delegating judgment while keeping no review loop.
-- Choosing tools before understanding the system shape.
-- Preserving a process only because it is familiar.
+Use visualization of intermediate steps to let users see the team's engineering decisions. Examples: show the iteration process of prompt engineering, the details of data cleaning, and tradeoffs in model choice. This is not for showing off, but for **transferring the trust subject** -- from "how smart the AI is" to "how much care the team took."
 
-## 5. Related Practice
+### Separating Descriptive Information and Normative Information
 
-When this axiom applies, prefer small verified steps, explicit assumptions, and durable written memory. If the lesson repeats across projects, promote it into a skill or another axiom rather than leaving it buried in a session transcript.
+**Descriptive information**: what AI can do (objective capability). **Normative information**: how the team believes it should be used (value judgment). Confusing the two causes user expectations of AI to spin out of control. Clear separation helps users build trust in the team.
+
+## 3. Application Criteria
+
+- **Marketing copy**: emphasize the team's engineering choices, not AI's magical capability.
+- **Demo design**: show failure cases and how the team handles edge conditions.
+- **Brand positioning**: build a professional image of "we understand AI's limits."
+- **User conversion**: shift from "AI is powerful" to "we are responsible."
+
+## 4. Relationship to Other Axioms
+
+**V03 Attribution Shapes Perception** is the general principle; **V05** is its specific application in AI product design. **V02 Verifiability** provides the foundation for trust building: only verifiable promises can transfer the trust subject.

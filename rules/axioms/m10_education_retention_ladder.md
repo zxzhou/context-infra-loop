@@ -1,33 +1,42 @@
-# M10. Education Retention Ladder
+---
+id: axiom_m10_education_retention_ladder_2026
+category: management
+created: 2026-03-01
+updated: 2026-03-01
+---
+
+# M10. Education Retention Ladder Model
 
 ## 1. Core Axiom
 
-Learning sticks when people move from exposure to practice to feedback to ownership. Retention rises with active use and repeated retrieval.
+Across observations of 2,500+ students, AI learners drop off at four clear stages. These stages share one feature: they are friction problems, not learning-ability problems. Traditional solutions such as more tutorials and more detailed documentation actually increase friction. The AI-era solution is to remove friction through engineering: unified APIs, one-click deployment, and MCP automation.
 
-## 2. Implications
+## 2. Deep Reasoning
 
-This axiom should change how a task is framed before work begins. Use it to clarify what actually constrains the outcome, what evidence would prove progress, and which parts of the system deserve attention first.
+### Stage One: The Brain Understands but the Hands Do Not
 
-In agentic work, the axiom is especially useful because model capability can hide weak process. A stronger model may produce more fluent output, but it does not remove the need for context design, verification, ownership, and feedback.
+Knowing is not the same as doing. Students understand the concept but cannot practice it in real scenarios. The solution is not more explanation, but **immediately runnable code examples** and **embedded sandbox environments**.
 
-## 3. Application
+### Stage Two: Toy Example -> Real Application
 
-Use this axiom when you see recurring friction, vague success criteria, unclear ownership, excessive tool debate, brittle handoffs, or a decision that depends on hidden assumptions. Translate the principle into a concrete check before acting.
+When students jump from teaching examples to real projects, they run into friction around registration, API keys, and environment configuration. This is not a learning problem; it is an **engineering problem**. One-click authentication, preconfigured development environments, and automated dependency management can solve it directly.
 
-Practical prompts:
+### Stage Three: Passive Reception -> Forming Judgment
 
-1. What is the real bottleneck or uncertainty here?
-2. What would make the result independently verifiable?
-3. Which context, interface, or feedback loop is missing?
-4. What should be documented so the next iteration starts smarter?
+Consuming content does not build judgment. Students need **extensible experimental frameworks**, not more tutorials. The MCP toolchain lets students iterate, compare, and validate hypotheses quickly.
 
-## 4. Failure Modes
+### Stage Four: Local -> Deployed Delivery
 
-- Confusing activity with progress.
-- Delegating judgment while keeping no review loop.
-- Choosing tools before understanding the system shape.
-- Preserving a process only because it is familiar.
+Code on localhost cannot become a portfolio. **One-click deployment to a shareable URL** turns assignments into demonstrable outcomes and activates intrinsic motivation.
 
-## 5. Related Practice
+## 3. Application Criteria
 
-When this axiom applies, prefer small verified steps, explicit assumptions, and durable written memory. If the lesson repeats across projects, promote it into a skill or another axiom rather than leaving it buried in a session transcript.
+- AI course design and syllabi
+- Learning-platform product decisions
+- User retention and conversion-rate analysis
+- Education GTM strategy
+
+## 4. Relationship to Other Axioms
+
+- **M01 Closed-Loop Calibration**: mastery comes from feedback loops, not one-way input.
+- **A09 Builder Mindset**: the difference between consuming and building is fundamental, especially in education.

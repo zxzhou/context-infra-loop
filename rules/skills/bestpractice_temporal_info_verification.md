@@ -1,38 +1,61 @@
-# Temporal Information Verification
+# Time-Sensitive Information Verification
 
-## Metadata
+## Background
 
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+AI models have knowledge cutoff dates and may miss new versions, features, or products released afterward. When information may be time-sensitive, do not judge from training data alone; actively verify it.
 
-## Core Idea
+## Triggers
 
-For current or date-sensitive information, verify source freshness and state concrete dates rather than relying on memory.
+Use this when the following types of information may conflict with your knowledge:
 
-## When to Use
+- Model names/version numbers (such as Gemini, Claude, GPT)
+- Software versions (frameworks, libraries, tools)
+- API endpoints or parameters
+- Feature updates for known products
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+## Procedure
 
-## Operating Procedure
+1. **Do not directly reject it**: the version number in the user's code may really exist
+2. **Use Tavily search to verify**: check whether a new version has been released
+3. **Provide accurate information**: include the full version number and release date if available
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+## Case
 
-## Quality Bar
+### Gemini Model Name (2026-02)
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+The code contained `gemini-3.0-flash`, which initially looked like an invalid model name.
 
-## Common Pitfalls
+**After verification**: Gemini 3.0 Flash had indeed been released, but the user had omitted the `-preview` suffix. The correct name was `gemini-3.0-flash-preview`.
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+**Lesson**: If a model name looks "too new," search first to confirm whether it has been released instead of assuming the user is wrong.
+
+## Search Templates
+
+```
+{product name} {version number} release date
+{product name} {version number} official announcement
+```
+
+Use Tavily search with `search_depth="advanced"` and `max_results=5`.
+
+## Physical Anchor Check
+
+### Principle
+
+In numerical logic, use physical common sense as the final defense for checking complex logic. AI output may look plausible, but if it violates physical laws, it should be questioned.
+
+### Use Cases
+
+- AI-generated technical parameters, such as satellite altitude or device specifications
+- Numerical calculation results, including whether the order of magnitude is reasonable
+- Causal reasoning, including whether it violates physical laws
+
+### Case
+
+AI gave orbital parameters for a geostationary satellite, but the relationship between altitude and declination did not satisfy Kepler's laws. Physical common sense (a geostationary satellite must be above the equator at about 35,786 km) exposed the hallucination.
+
+### Execution
+
+1. Identify the parts of the output involving physical quantities
+2. Do a quick check using known physical common sense, such as unit conversion, order of magnitude, and laws
+3. If an anomaly appears, ask the AI to explain again or verify through search

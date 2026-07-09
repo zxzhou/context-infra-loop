@@ -1,38 +1,61 @@
-# PDF to Markdown Best Practices
+---
+title: PDF to Markdown
+category: BestPractice
+tags: [pdf, markdown, docling, document-conversion]
+difficulty: Easy
+created: 2026-04-27
+---
 
-## Metadata
+# PDF to Markdown
 
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+When you need to convert PDFs to Markdown for feeding into an LLM, extracting content, or archiving source materials, **use Docling by default**.
 
-## Core Idea
+## Why Docling
 
-Extract PDFs with layout awareness, verify tables and page order, and preserve citations, headings, and images when they carry meaning.
+In the OpenDataLoader benchmark of 12 PDF-to-Markdown engines, Docling had the highest overall score (0.882), with the best fidelity for tables and headings. It uses the MIT license, is pure Python, runs on CPU (about 3 seconds/page), and is faster with a GPU.
 
-## When to Use
+Do not use the following counterexamples we have tested:
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+- **MarkItDown**: Built on pdfminer.six; heading-level preservation is 0%, and tables mostly collapse. Office documents are OK; PDFs are not.
+- **PyMuPDF4LLM**: Fastest, but AGPL, which restricts commercial use.
+- **Marker**: Quality is close to Docling, but it is GPL; commercial use requires payment.
 
-## Operating Procedure
+If you want to keep engine-comparison research in your own workspace, put the research notes under project docs or `contexts/`, and link to your local report from this skill.
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+## How to Use
 
-## Quality Bar
+```bash
+uv pip install --python .venv/bin/python docling
+```
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+```python
+from docling.document_converter import DocumentConverter
 
-## Common Pitfalls
+conv = DocumentConverter()
+result = conv.convert("input.pdf")
+md = result.document.export_to_markdown()
+```
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+The first call downloads about 1 GB of model weights into the HuggingFace cache; later calls reuse them. One `DocumentConverter()` instance can convert multiple files in sequence, so do not create a new instance for every file.
+
+## Acceptance Criteria
+
+- Tables in the output Markdown are preserved with standard `| ... |` syntax and aligned columns
+- Heading levels (`#`, `##`, `###`) match the visual hierarchy of the original PDF
+- In size terms: text-only PDFs usually compress to Markdown by 5-10x; pure scanned documents will not shrink significantly
+
+## Known Pitfalls
+
+**Section headings can be swallowed**. When a heading in the PDF is emphasized text inside a table rather than a true layout heading, Docling may identify it as an ordinary cell. The symptom is two consecutive `## HOLDINGS` headings with no account name between them. Fix: use context, such as account number or beginning balance, to check the corresponding page in the original PDF, and manually add the section header if needed.
+
+**Two PDFs have identical content but different filenames**. If two converted files have exactly the same character count, compare the original files with `md5` first. They were probably uploaded incorrectly. Docling does not dedupe automatically.
+
+**pip does not exist inside the venv**. Venvs created with uv usually do not include pip, so `venv/bin/python -m pip install` reports `No module named pip`. Use `uv pip install --python .venv/bin/python <pkg>` instead.
+
+## Applicability Boundaries
+
+Not applicable to:
+
+- Scanned / image PDFs: Docling includes OCR, but its accuracy is not as good as dedicated OCR. For pure scanned documents, evaluate Tesseract or a commercial API first
+- Complex mathematical formulas: LaTeX can be exported, but fidelity is limited
+- Archival scenarios that need to preserve page numbers, headers, and footers: Docling removes these by default

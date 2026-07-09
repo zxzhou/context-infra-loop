@@ -1,38 +1,33 @@
-# GUI Automation Best Practices
+# GUI Automation Methodology
 
-## Metadata
-
-- **Type**: Skill
-- **Status**: Active
-- **Language**: English
+Make an API Out of Things That Don't Provide an API.
 
 ## Core Idea
 
-Automate graphical workflows with explicit state checks, screenshots, selectors, and recovery paths.
+Many systems do not provide APIs, but developer tools, bookmarklets, Playwright, and similar tools can turn API-less interfaces into programmable interfaces.
 
-## When to Use
+## Technical Paths
 
-Use this file when the current task touches the topic in the title, when a decision needs a reusable principle, or when an agent needs stable context before acting.
+### 1. Dev Tools + HAR Export
 
-## Operating Procedure
+HTML elements in dynamic pages, such as infinite-scroll pages, may be dynamically removed. The solution:
 
-1. State the goal and the concrete success criteria.
-2. Identify the relevant constraints, inputs, and failure modes.
-3. Choose the smallest workflow that can produce a verifiable result.
-4. Execute with visible intermediate artifacts: commands, files, logs, screenshots, sources, or tests.
-5. Verify the result against the success criteria before reporting completion.
-6. Capture any reusable lesson in the appropriate rule, skill, observation, or project document.
+1. Open Dev Tools -> Network Tab
+2. Perform the operation
+3. Export HAR
+4. Programmatically parse the HAR file
 
-## Quality Bar
+### 2. Bookmarklet + Vision API
 
-- Claims are grounded in evidence or marked as assumptions.
-- User-visible output is clear, concise, and useful.
-- Code or automation changes preserve existing interfaces unless an intentional migration is stated.
-- Follow-up work is explicit, scoped, and not confused with completed work.
+Clicking a bookmark on any webpage image can invoke AI to describe the image contents: GUI injection that "hijacks the interface."
 
-## Common Pitfalls
+### 3. Playwright / Claude Computer Use
 
-- Optimizing a local detail while the system bottleneck is elsewhere.
-- Treating generated output as correct without independent verification.
-- Mixing temporary task notes with durable operating rules.
-- Adding process that does not reduce risk, ambiguity, or repeated effort.
+Use VM screenshots + pixel operations to implement GUI automation. This applies when no API exists at all.
+
+### Breakpoints in the Human-AI Loop
+
+When a human has to take and paste screenshots manually, the automation chain is broken. Solutions:
+
+- Let AI take screenshots itself (Playwright)
+- Use screenshot utilities for automatic capture

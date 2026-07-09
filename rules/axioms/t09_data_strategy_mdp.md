@@ -1,33 +1,44 @@
-# T09. Data Strategy as MDP
+---
+id: axiom_t9_data_strategy_mdp_2026
+category: technical
+created: 2026-03-01
+updated: 2026-03-01
+---
+
+# T9. Data Strategy and MDP
 
 ## 1. Core Axiom
 
-Data strategy is a sequential decision process. Each collection, labeling, and storage choice changes future option value.
+In AI products, data capture itself is the first-stage product (MDP = Minimum Data Product). Data sovereignty and local accumulation create durable competitive advantage.
 
-## 2. Implications
+## 2. Deep Reasoning
 
-This axiom should change how a task is framed before work begins. Use it to clarify what actually constrains the outcome, what evidence would prove progress, and which parts of the system deserve attention first.
+**The Paradigm Shift of the MDP Concept**
 
-In agentic work, the axiom is especially useful because model capability can hide weak process. A stronger model may produce more fluent output, but it does not remove the need for context design, verification, ownership, and feedback.
+Traditional product thinking: product first, data as a byproduct. MDP thinking: data capture itself is the product. This means that before functionality is complete, you first establish a data-collection loop -- even if it is only simple records of user interactions, it becomes a foundation for iteration.
 
-## 3. Application
+**Breaking the Data Flywheel's Static Point**
 
-Use this axiom when you see recurring friction, vague success criteria, unclear ownership, excessive tool debate, brittle handoffs, or a decision that depends on hidden assumptions. Translate the principle into a concrete check before acting.
+When early data is scarce, a VLM (vision-language model) can serve as an initial harvesting tool, quickly generating annotations or features. Human feedback is then introduced to form a loop and gradually improve model quality. This process is not one-off; it is continuous iteration, with each round of feedback strengthening the next round's data quality.
 
-Practical prompts:
+**Architectural Choice for Data Sovereignty**
 
-1. What is the real bottleneck or uncertainty here?
-2. What would make the result independently verifiable?
-3. Which context, interface, or feedback loop is missing?
-4. What should be documented so the next iteration starts smarter?
+Local Agents preserve data control, while cloud solutions mean data flows outward. This is not only a technical choice, but also a strategic one. Data accumulated locally becomes an asset that cannot be copied, while cloud dependency creates risks of vendor lock-in and data leakage.
 
-## 4. Failure Modes
+**Entropy Increase in Data Labeling**
 
-- Confusing activity with progress.
-- Delegating judgment while keeping no review loop.
-- Choosing tools before understanding the system shape.
-- Preserving a process only because it is familiar.
+As labeling scale grows, quality often declines; this is entropy increase in the labeling process. Sampling audits and continuous quality monitoring are needed to counter this trend and ensure dataset usability.
 
-## 5. Related Practice
+## 3. Application Criteria
 
-When this axiom applies, prefer small verified steps, explicit assumptions, and durable written memory. If the lesson repeats across projects, promote it into a skill or another axiom rather than leaving it buried in a session transcript.
+Apply this axiom in the following scenarios:
+- When building AI features or ML models, prioritize data-collection mechanisms.
+- When choosing cloud versus local architecture, evaluate the cost of data sovereignty.
+- When designing personalized systems, establish a loop for local data accumulation.
+
+## 4. Relationship to Other Axioms
+
+- **T04 Data Over Opinion**: Establishes data-first thinking at a higher level.
+- **M01 Closed-Loop Calibration**: A data flywheel is essentially a calibration loop that continuously approaches truth through feedback.
+
+**See also**: [Knowledge Flywheel Design Pattern](../skills/workflow_knowledge_flywheel.md) -- brute-force iteration in knowledge engineering
